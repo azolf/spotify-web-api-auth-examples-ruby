@@ -57,3 +57,5 @@ You could also clone the repository and start the container with the `docker-com
 ```
 $ docker-compose up -d
 ```
+
+Then, open http://localhost:8000 in a browser.
