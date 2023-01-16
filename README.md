@@ -6,3 +6,54 @@ This tutorial will replace Node.js with Ruby in the [Authentication Flow example
 In this example we retrieve data from the Web API /me endpoint, that includes information about the current user.
 
 Here we will use Ruby for server-side applications.
+
+## Installation
+First you need to clone the repository.
+```
+$ git clone https://github.com/azolf/spotify-web-api-auth-examples-ruby.git
+```
+Then you should go to the directory and install the required Gems.
+```
+$ cd spotify-web-api-auth-examples-ruby/
+$ bundle install
+```
+
+You could edit the Spotify Client Id and Client Secret in `server.rb` file.
+```
+...
+$client_id = ENV['CLIENT_ID']
+$client_secret = ENV['CLIENT_SECRET']
+...
+```
+
+Or you could pass them as environemnt variables.
+```
+$ CLIENT_ID=YOUR_CLIENT_ID CLIENT_SECRET=YOUR_CLIENT_SECRET ruby server.rb
+```
+
+## Using Docker Image
+You could also use pre built docker image.
+
+```
+$ docker pull azolf/spotify-web-api-auth-examples-ruby
+$ docker run -itd \
+--name spotify-web-api-auth-examples-ruby \
+-p 8000:8000 \
+-e CLIENT_ID=YOUR_CLIENT_ID \
+-e CLIENT_SECRET=YOUR_CLIENT_SECRET \
+azolf/spotify-web-api-auth-examples-ruby:latest
+```
+
+## Using docker-compose
+You could also clone the repository and start the container with the `docker-compose.yml` file. You just need to replace your Client Id and Client Secret in it.
+```
+...
+    environment:
+      - CLIENT_ID=YOUR_CLIENT_ID
+      - CLIENT_SECRET=YOUR_CLIENT_SECRET
+...
+```
+
+```
+$ docker-compose up -d
+```
